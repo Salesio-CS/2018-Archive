@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">UrinalMap</string>
+    <string name="move">移動</string>
+    <string name="search">検索</string>
+    
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+        <item>答えたくない</item>
+    </string-array>
+
+    <string-array name="day">
+        <item>平日</item>
+        <item>土日</item>
+        <item>祝日</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>朝5~10</item>
+        <item>昼10~18</item>
+        <item>夜18~23</item>
+        <item>深夜23~5</item>
+    </string-array>
+    <string-array name="clean">
+        <item>きれい</item>
+        <item>汚い</item>
+    </string-array>
+    <string-array name="item">
+        <item>揃ってる</item>
+        <item>揃っていない</item>
+    </string-array>
+
+    <string name="title_sex">性別</string>
+    <string name="title_days">日の種類</string>
+    <string name="title_use_time">利用時間</string>
+    <string name="title_clean_degrees">清潔度</string>
+    <string name="title_equipment">備品</string>
+    <string name="title_congestion">混み具合</string>
+    <string name="title_evaluation">評価</string>
+    
+    <string name="determination">決定</string>
+
+    <string name="item_place">場所：</string>
+    <string name="item_clean_degrees">清潔度：</string>
+    <string name="item_equipment">備品：</string>
+    
+    <string name="do_evaluation">評価する</string>
+
+    <string name="enquete">評価</string>
+
+
+</resources>

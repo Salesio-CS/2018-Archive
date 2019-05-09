@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main"
+    >
+
+    <LinearLayout
+    android:id="@+id/linelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/map"
+            android:layout_width="1300dp"
+            android:layout_height="1300dp"
+            android:adjustViewBounds="true"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="30dp"
+        style="@android:style/Widget.ProgressBar"
+        />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/pin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        app:srcCompat="@android:drawable/ic_menu_myplaces"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+
+</android.support.constraint.ConstraintLayout>

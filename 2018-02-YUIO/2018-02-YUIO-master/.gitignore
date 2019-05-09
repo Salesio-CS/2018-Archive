@@ -1,0 +1,12 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/OlympicNavigator/.vs/OlympicNavigator/v15/Server/sqlite3/db.lock
+/OlympicNavigator/OlympicNavigator/bin/x64/Debug
+/OlympicNavigator/.vs/OlympicNavigator/DesignTimeBuild
+/OlympicNavigator/OlympicNavigator/obj/x64/Release
+/.vs/2018-02-YUIO/v15/Browse.VC.opendb
+/GraphicsTest

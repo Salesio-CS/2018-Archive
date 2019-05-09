@@ -1,0 +1,279 @@
+﻿<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Olympic Navigator</title>
+
+  <style type="text/css">
+    html,
+    body,
+   
+ #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    
+  #container {
+      width: calc(100%);
+      height: calc(100%);
+    }
+
+    #sample {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"> 
+   <div id="sample"></div>
+  </div>
+
+  <script type="text/javascript">
+
+	/* マーカーの情報を定義 */
+ const markerData = [
+{
+  name: 'オリンピックスタジアム',
+			lat: 35.67816,
+			lng: 139.71489,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E9%99%B8%E4%B8%8A%E7%AB%B6%E6%8A%80%E3%83%BB%E3%83%9E%E3%83%A9%E3%82%BD%E3%83%B3%20.png?token=ATuEO8x68jiuh3JYtEJJVtZRiCaN2O0Cks5cY82vwA%3D%3D',
+  		},{
+  name: '東京体育館',
+			lat: 35.71908,
+ 			lng: 139.72956,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E5%8D%93%E7%90%83.png?token=ATuEOwJYbiqXjgRxxowb5l3doCqVL3rtks5cY83OwA%3D%3D', 
+ 		},{
+  name: '国立代々木競技場',
+			lat: 35.66634,
+			lng: 139.69479,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%8F%E3%83%B3%E3%83%89%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO_MX8_7JxwGerYPmqzgQ0oAo9Nuqks5cY9CHwA%3D%3D',
+  		},{
+  name: '日本武道館',
+			lat: 35.69324,
+			lng: 139.74987,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E6%9F%94%E9%81%93.png?token=ATuEO_4WftFs0Mx2mPxeAUQPeYQU2pdlks5cY9EiwA%3D%3D',
+  		   },{
+  name: '皇居外苑',
+			lat: 35.68358,
+			lng: 139.74436,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E9%99%B8%E4%B8%8A%E7%AB%B6%E6%8A%80%E3%83%BB%E3%83%9E%E3%83%A9%E3%82%BD%E3%83%B3%20.png?token=ATuEO3Aj1EBfOhU5gu86oodc9j7iYqO3ks5cY9GhwA%3D%3D',
+  		   },{
+  name: '東京国際フォーラム',
+			lat: 35.67669,
+			lng: 139.76437,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%A6%E3%82%A8%E3%82%A4%E3%83%88%E3%83%AA%E3%83%95%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0.png?token=ATuEO5gXtxCCmyxBKbihicU7ONjJxZPxks5cY9H6wA%3D%3D',
+  		   },{
+  name: '国技館',
+			lat: 35.69691,
+			lng: 139.79351,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%9C%E3%82%AF%E3%82%B7%E3%83%B3%E3%82%B0.png?token=ATuEO241S0EaJiZyH7lE--juLva2AW7wks5cY9JOwA%3D%3D',
+  		   },{
+  name: '馬事公苑',
+			lat: 35.63851,
+			lng: 139.63226,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E9%A6%AC%E8%A1%93.png?token=ATuEO96-C4twUIibQ3GfchgC-6iNfi2Dks5cY9KXwA%3D%3D',
+  		   },{
+  name: '武蔵野の森総合スポーツプラザ',
+			lat: 35.66496,
+			lng: 139.52447,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%90%E3%83%89%E3%83%9F%E3%83%B3%E3%83%88%E3%83%B3.png?token=ATuEO_wOZ-9WhZxQw7zji3EI0cyNNOyOks5cY9L_wA%3D%3D',
+  		   },{
+  name: '東京スタジアム',
+			lat: 35.66427,
+			lng: 139.52715,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEOyhVMd4khD50MehWHwCa5WIOhlaxks5cY9NZwA%3D%3D',
+  		   },{
+  name: '武蔵野の森公園',
+			lat: 35.67659,
+			lng: 139.5234,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E8%BF%91%E4%BB%A3%E4%BA%94%E7%A8%AE.png?token=ATuEO2h0iD00tMl-rG8yldkCrCxu5TMpks5cY9j_wA%3D%3D',
+  		   },{
+  name: '有明アリーナ',
+			lat: 35.63628,
+			lng: 139.79014,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%90%E3%83%AC%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO0qTI22hzt5nHclA9JEpsGjdrlXeks5cY9nRwA%3D%3D',
+  		   },{
+  name: '有明体操競技場',
+			lat: 35.63577,
+			lng: 139.79051,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E4%BD%93%E6%93%8D.png?token=ATuEO_fePqSRzk6AXmwILGaX2P95DH8Uks5cY9qdwA%3D%3D',
+  		   },{
+  name: '有明アーバンスポーツパーク',
+			lat: 35.63311,
+			lng: 139.79237,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E8%BF%91%E4%BB%A3%E4%BA%94%E7%A8%AE.png?token=ATuEO2h0iD00tMl-rG8yldkCrCxu5TMpks5cY9j_wA%3D%3D',
+  		   },{
+  name: '有明テニスの森',
+			lat: 35.63461,
+			lng: 139.78858,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%86%E3%83%8B%E3%82%B9.png?token=ATuEO3J9N0_VyjzIblwVW0GVzaN7Ujw5ks5cY9vowA%3D%3D',
+  		   },{
+  name: 'お台場海浜公園',
+			lat: 35.62934,
+			lng: 139.77534,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E6%B0%B4%E6%B3%B3.png?token=ATuEOwP4Z61IUlwPwz1Pcd2gObs6k-X-ks5cY9y_wA%3D%3D',
+  		   },{
+  name: '潮風公園',
+			lat: 35.62401,
+			lng: 139.76877,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%90%E3%83%AC%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO55RRdW_6gC8lYHt5nmPDH7ThE4_ks5cY90RwA%3D%3D',
+  		   },{
+  name: '青海アーバンスポーツパーク',
+			lat: 35.62328,
+			lng: 139.77635,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%90%E3%82%B9%E3%82%B1%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEOw8XSgCrPlOYZSv3FneLyHQP0eE1ks5cY94twA%3D%3D',
+  		   },{
+  name: '大井ホッケー競技場',
+			lat: 35.59215,
+			lng: 139.7528,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%9B%E3%83%83%E3%82%B1%E3%83%BC.png?token=ATuEO71MYO1COX9-gfmPE7LbMiAUsvGFks5cY95wwA%3D%3D',
+  		   },{
+  name: '海の森クロスカントリー',
+			lat: 35.60701,
+			lng: 139.80528,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E9%A6%AC%E8%A1%93.png?token=ATuEOzDePqjoglpZjYy9xGLEggjYUSR8ks5cY9-HwA%3D%3D',
+  		   },{
+  name: '海の森水上競技場',
+			lat: 35.60083,
+			lng: 139.80643,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%AB%E3%83%8C%E3%83%BC.png?token=ATuEO-Pj7AA4aEvJHomXNBCKiMu20AHDks5cY-DZwA%3D%3D',
+  		   },{
+  name: 'カヌー・スラロームセンター',
+			lat: 35.64326,
+			lng: 139.85322,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%AB%E3%83%8C%E3%83%BC.png?token=ATuEO-Pj7AA4aEvJHomXNBCKiMu20AHDks5cY-DZwA%3D%3D',
+  		   },{
+  name: '夢の島公園アーチェリー場',
+			lat: 35.65047,
+			lng: 139.82566,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%A2%E3%83%BC%E3%83%81%E3%82%A7%E3%83%AA%E3%83%BC.png?token=ATuEOx7ael6Rq6YnW2-FQ9Xt30VBfGMAks5cY-YswA%3D%3D',
+  		   },{
+  name: '東京アクアティクスセンター',
+			lat: 35.65114,
+			lng: 139.81504,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E6%B0%B4%E6%B3%B3.png?token=ATuEO9U6-MDOqSpzy5HLXuYGwaWsA3ESks5cY-cEwA%3D%3D',
+  		   },{
+  name: '東京辰巳国際水泳場',
+			lat: 35.64766,
+			lng: 139.81894,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E6%B0%B4%E6%B3%B3.png?token=ATuEO9U6-MDOqSpzy5HLXuYGwaWsA3ESks5cY-cEwA%3D%3D',
+  		   },{
+  name: '幕張メッセ',
+			lat: 35.6498,
+			lng: 140.03635,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%86%E3%82%B3%E3%83%B3%E3%83%89%E3%83%BC.png?token=ATuEO0yL-zYdURhVyEVcD3tLYqtIEd8Tks5cY-fPwA%3D%3D',
+  		   },{
+  name: '釣ヶ崎海岸サーフィンビーチ',
+			lat: 34.99147,
+			lng: 139.83645,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%BC%E3%83%95%E3%82%A3%E3%83%B3.png?token=ATuEO3fngVGAw1QidVXiJnAq_bm0ii_Iks5cY-jnwA%3D%3D',
+  		   },{
+  name: 'さいたまスーパーアリーナ',
+			lat: 35.89508,
+			lng: 139.63073,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%83%90%E3%82%B9%E3%82%B1%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO_ZB_iwvp_rWu-GdHeARgae7E_qwks5cY-k5wA%3D%3D',
+  		   },{
+  name: '陸上自衛隊朝霧訓練場',
+			lat: 35.77894,
+			lng: 139.5851,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E5%B0%84%E6%92%83.png?token=ATuEO7w0dMyJHsfHF1yp2u4uJ88Qfjbfks5cY-mrwA%3D%3D',
+  		   },{
+  name: '霞が関カンツリー倶楽部',
+			lat: 35.90145,
+			lng: 139.40443,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B4%E3%83%AB%E3%83%95.png?token=ATuEO1HVoe8CR4CqTLh8eF0p4AhymP3Hks5cY-u2wA%3D%3D',
+  		   },{
+  name: '江の島ヨットハーバー',
+			lat: 35.29961,
+			lng: 139.48356,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%BB%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.png?token=ATuEO1cPWVfxEATcRNqUucgdAxynixokks5cY-wCwA%3D%3D',
+  		   },{
+  name: '伊豆ベロドローム',
+			lat: 35.01155,
+			lng: 139.01526,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E8%BF%91%E4%BB%A3%E4%BA%94%E7%A8%AE.png?token=ATuEO4oYH9VRi_3H84CtR5MUAZUtny8yks5cY-xwwA%3D%3D',
+  		   },{
+  name: '伊豆MTBコース',
+			lat: 34.97658,
+			lng: 138.9467,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E8%BF%91%E4%BB%A3%E4%BA%94%E7%A8%AE.png?token=ATuEO4oYH9VRi_3H84CtR5MUAZUtny8yks5cY-xwwA%3D%3D',
+  		   },{
+  name: '富士スピードウェイ',
+			lat: 35.36683,
+			lng: 138.93643,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E8%BF%91%E4%BB%A3%E4%BA%94%E7%A8%AE.png?token=ATuEO4oYH9VRi_3H84CtR5MUAZUtny8yks5cY-xwwA%3D%3D',
+  		   },{
+  name: '福島あづま球場',
+			lat: 37.72141,
+			lng: 140.36368,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%BD%E3%83%95%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO-igx7NNEv1zgFjVoFdYoXyvR63jks5cY-1zwA%3D%3D',
+  		   },{
+  name: '横浜スタジアム',
+			lat: 35.44331,
+			lng: 139.64007,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%BD%E3%83%95%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB.png?token=ATuEO-igx7NNEv1zgFjVoFdYoXyvR63jks5cY-1zwA%3D%3D',
+  		   },{
+  name: '札幌ドーム',
+			lat: 43.01497,
+			lng: 141.40987,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEO7DRrrhWnPNKXNmq3EWouroRvxzJks5cY-7KwA%3D%3D',
+  		   },{
+  name: '宮城スタジアム',
+			lat: 38.33547,
+			lng: 140.95029,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEO7DRrrhWnPNKXNmq3EWouroRvxzJks5cY-7KwA%3D%3D',
+  		   },{
+  name: '茨城カシマスタジアム',
+			lat: 35.99199,
+			lng: 140.64033,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEO7DRrrhWnPNKXNmq3EWouroRvxzJks5cY-7KwA%3D%3D',
+  		   },{
+  name: '埼玉スタジアム2002',
+			lat: 35.90307,
+			lng: 139.71739,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEO7DRrrhWnPNKXNmq3EWouroRvxzJks5cY-7KwA%3D%3D',
+  		   },{
+  name: '横浜国際総合競技場',
+			lat: 35.50997,
+			lng: 139.60629,
+			icon: 'https://raw.githubusercontent.com/Salesio-CS/2018-02-YUIO/master/sports/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC.png?token=ATuEO7DRrrhWnPNKXNmq3EWouroRvxzJks5cY-7KwA%3D%3D',
+  		   },
+];
+
+	/* Mapの生成 */
+    function initMap() {      
+  	 const map = new google.maps.Map(document.getElementById('sample'), {
+  		center: new google.maps.LatLng(markerData[0]),
+			zoom: 15,
+});
+	/* markerDataをもとにMarkerを生成 */
+    for (let i = 0; i < markerData.length; i++) {
+  	 const marker = new google.maps.Marker({
+	        position: new google.maps.LatLng(markerData[i]),
+		   map,
+		  icon: markerData[i].icon,
+		     });
+           
+        /* マーカークリック時用の吹き出し生成 */
+   
+     const infoWindow = new google.maps.InfoWindow({
+       content: `<div class="sample">${markerData[i].name}</div>`,
+    });
+
+        /* マーカークリック時用の吹き出し表示 */
+     
+   marker.addListener('click', () => {
+       infoWindow.open(map, marker);
+    });
+}
+   }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=[API_Key]&callback=initMap">
+</script>
+</body>
+</html>

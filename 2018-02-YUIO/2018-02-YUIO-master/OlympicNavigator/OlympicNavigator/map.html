@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Map</title>
+	<style type="text/css">
+		html, body {
+			height: 100%;
+			margin: 0px;
+		}
+
+		#map_canvas {
+			height: 100%;
+			overflow: auto;
+		}
+	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?key=[API_Key]&callback=initMap"></script>
+	<script>
+		var map;
+		var geo;
+		var mapLoad;
+		google.maps.event.addDomListener(window, 'load', function () {
+			var mapdiv = document.getElementById("map_canvas");
+			var myOptions = { zoom: 13, center: new google.maps.LatLng(35.681167, 139.767052), mapTypeId: google.maps.MapTypeId.ROADMAP, scaleControl: true };
+			map = new google.maps.Map(mapdiv, myOptions);
+			geo = new google.maps.Geocoder();
+
+			google.maps.event.addListenerOnce(map, 'idle', function () {
+				mapLoad = true;
+			});
+		});
+
+		function moveMap(address) {
+			if (geo) {
+				geo.geocode({ 'address': address }, function (results, status) {
+					map.setCenter(results[0].geometry.location);
+				});
+			}
+		}
+
+		function geoTest() {
+			if (geo) {
+				return "true";
+			} else {
+				return "false";
+			}
+		}
+
+		function mapTest() {
+			if (mapLoad) {
+				return "true";
+			} else {
+				return "false";
+			}
+		}
+
+		function getLocation() {
+			var center = map.getCenter();
+			var northEast = map.getBounds().getNorthEast();
+			var southWest = map.getBounds().getSouthWest();
+			return center.lat() + "," + center.lng() + "," + northEast.lat() + "," + northEast.lng() + "," + southWest.lat() + "," + southWest.lng() + "," + map.getZoom();
+		}
+	</script>
+</head>
+<body>
+	<div id="map_canvas"></div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/sexTitle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/title_sex" />
+
+
+    <Spinner
+        android:id="@+id/sexSpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sexTitle"
+        android:layout_alignStart="@id/sexTitle"
+        android:entries="@array/sex" />
+
+    <TextView
+        android:id="@+id/dayTitle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sexSpinner"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/sexSpinner"
+        android:text="@string/title_days" />
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dayTitle"
+        android:layout_alignStart="@id/dayTitle"
+        android:entries="@array/day" />
+
+    <TextView
+        android:id="@+id/timeTitle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daySpinner"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/daySpinner"
+        android:text="@string/title_use_time" />
+
+    <Spinner
+        android:id="@+id/timeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeTitle"
+        android:layout_alignStart="@id/timeTitle"
+        android:entries="@array/time" />
+
+    <TextView
+        android:id="@+id/cleanTitle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/title_clean_degrees" />
+
+    <Spinner
+        android:id="@+id/cleanSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cleanTitle"
+        android:layout_alignStart="@id/cleanTitle"
+        android:entries="@array/clean" />
+
+    <TextView
+        android:id="@+id/equipmentTitle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cleanSpinner"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/cleanSpinner"
+        android:text="@string/title_equipment" />
+
+    <Spinner
+        android:id="@+id/equipmentSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/equipmentTitle"
+        android:layout_alignStart="@id/equipmentTitle"
+        android:entries="@array/item" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/determination"/>
+</RelativeLayout>

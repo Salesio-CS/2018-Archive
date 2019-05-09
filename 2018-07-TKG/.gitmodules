@@ -1,0 +1,6 @@
+[submodule "FiMap-iOS"]
+	path = FiMap-iOS
+	url = https://github.com/TKGeem/FiMap-iOS.git
+[submodule "FiMap-Batch"]
+	path = FiMap-Batch
+	url = https://github.com/TKGeem/FiMap-Batch.git
